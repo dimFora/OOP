@@ -27,13 +27,26 @@
                 this.isSaidHello = flag;
             }
         }
-    }
+    };
 
     let user1 = createUser('Vasya');
     let user2 = createUser('Misha');
 
     user1.sayHello();
     user2.sayHello();
+
+    let  admin = {
+        adminName: "Root",
+
+        helloUser (user = {name: '%userName%'}){
+            user.setIsSaidHello(true);
+            alert( `Hello, ${user.name}. I am ${this.adminName}` );
+        }
+    };
+
+    admin.helloUser(user1);
+    admin.helloUser(user2);
+  //  admin.helloUser(user);
 
 </script>
 </body>

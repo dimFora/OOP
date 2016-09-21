@@ -8,8 +8,32 @@
 <script>
     "use strict";
 
-    alert("Hello");
-    alert("Hello");
+    let createUser = function (name) {
+        let _name = name;
+
+        return {
+            name: _name,
+
+            _getGreetingWord() {
+                return ((new Date).getHours() < 10)? "Good morring" : "Hello";
+            },
+
+            sayHello() {
+                let text = `${this._getGreetingWord()}! I am ${_name}`;
+                alert( text );
+            },
+
+            setIsSaidHello(flag) {
+                this.isSaidHello = flag;
+            }
+        }
+    }
+
+    let user1 = createUser('Vasya');
+    let user2 = createUser('Misha');
+
+    user1.sayHello();
+    user2.sayHello();
 
 </script>
 </body>

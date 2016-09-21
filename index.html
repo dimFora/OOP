@@ -8,7 +8,7 @@
 <script>
     "use strict";
 
-    let createUser = function (name) {
+ /*   let createUser = function (name) {
         let _name = name;
 
         return {
@@ -27,16 +27,25 @@
                 this.isSaidHello = flag;
             }
         }
+    };*/
+
+  //  let user1 = createUser('Vasya');
+  //  let user2 = createUser('Misha');
+
+  //  user1.sayHello();
+  //  user2.sayHello();
+
+    let user = {
+        name: 'Vasya',
+        sayHello() {
+            alert( `Hello I am ${this.name}` );
+        }
     };
 
-    let user1 = createUser('Vasya');
-    let user2 = createUser('Misha');
-
-    user1.sayHello();
-    user2.sayHello();
-
     let  admin = {
-        adminName: "Root",
+        name: "Root",
+
+        sayHello: user.sayHello,
 
         helloUser (user = {name: '$'}) {
             if (Array.isArray(user)) {
@@ -44,19 +53,23 @@
                     this.helloUser(user);
                 });
             } else {
-                user.setIsSaidHello(true);
-                alert( `Hello, ${user.name}. I am ${this.adminName}` );
+               // user.setIsSaidHello(true);
+                alert( `Hello, ${user.name}` );
             }
         }
     };
 
-    admin.helloUser(user1);
-    admin.helloUser(user2);
-    admin.helloUser( [user1, user2] );
+    user.sayHello();
+
+    admin.sayHello();
+
+    admin.helloUser(user);
+ //   admin.helloUser(user2);
+ //   admin.helloUser( [user1, user2] );
    // admin.helloUser();
 
-    alert( user1.isSaidHello );
-    alert( user2.isSaidHello );
+  //  alert( user.isSaidHello );
+  //  alert( user2.isSaidHello );
 
 </script>
 </body>

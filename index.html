@@ -15,7 +15,7 @@
             name: _name,
 
             _getGreetingWord() {
-                return ((new Date).getHours() < 10)? "Good morring" : "Hello";
+                return ((new Date).getHours() < 10)? "Good morning" : "Hello";
             },
 
             sayHello() {
@@ -38,15 +38,25 @@
     let  admin = {
         adminName: "Root",
 
-        helloUser (user = {name: '%userName%'}){
-            user.setIsSaidHello(true);
-            alert( `Hello, ${user.name}. I am ${this.adminName}` );
+        helloUser (user = {name: '$'}) {
+            if (Array.isArray(user)) {
+                user.forEach(user => {
+                    this.helloUser(user);
+                });
+            } else {
+                user.setIsSaidHello(true);
+                alert( `Hello, ${user.name}. I am ${this.adminName}` );
+            }
         }
     };
 
     admin.helloUser(user1);
     admin.helloUser(user2);
-  //  admin.helloUser(user);
+    admin.helloUser( [user1, user2] );
+   // admin.helloUser();
+
+    alert( user1.isSaidHello );
+    alert( user2.isSaidHello );
 
 </script>
 </body>
